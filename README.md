@@ -1,16 +1,18 @@
 # hse22_hw1
 
-# Заход на сервер 
+## Заход на сервер 
+```
 negubanov@92.242.58.92 -p 32222 -i mykey
+```
 
-# Создание папки в ДЗ
+## Создание папки в ДЗ
 
 ```
 mkdir hw1
 cd hw1
 ```
 
-# Создаем симлинки на файлы:
+## Создаем симлинки на файлы:
 ```
 ln -s /usr/share/data-minor-bioinf/assembly/oil_R1.fastq
 ln -s /usr/share/data-minor-bioinf/assembly/oil_R2.fastq
@@ -18,7 +20,7 @@ ln -s /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R1_001.fastq
 ln -s /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R2_001.fastq
 ```
 
-# Случайно выбираем 5 миллионов чтений типа paired-end и 1.5 миллиона чтений типа mate-pairs:
+## Случайно выбираем 5 миллионов чтений типа paired-end и 1.5 миллиона чтений типа mate-pairs:
 
 ```
 seqtk sample -s946 /usr/share/data-minor-bioinf/assembly/oil_R1.fastq 5000000 > R1_paired_end.fastq  
@@ -27,14 +29,14 @@ seqtk sample -s946 /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R1_001.fa
 seqtk sample -s946 /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R2_001.fastq 1500000 > R2_mate_end.fastq   
 ```
 
-# С помощью программ fastQC оценим качество исходных чтений
+## С помощью программ fastQC оценим качество исходных чтений
 
 ```
 mkdir fastqc      
 ls *_end.fastq | xargs -P 4 -tI{} fastqc -o fastqc {}  
 ```
 
-# С помощью программ multiQC получаем статистику 
+## С помощью программ multiQC получаем статистику 
 
 ```
 mkdir multiqc      
@@ -52,7 +54,7 @@ multiqc -o multiqc fastqc
 ```
 
 
-# Подрежем чтения по качеству и удаляем адаптеры:
+## Подрежем чтения по качеству и удаляем адаптеры:
 
 ```
 platanus_trim R1_paired_end.fastq R2_paired_end.fastq
@@ -133,7 +135,7 @@ VmHWM:            0.161 GByte
 Execution time:      1.13 min
 ```
 
-# Оценим качество подрезанных чтений с помощью программ fastQC:
+## Оценим качество подрезанных чтений с помощью программ fastQC:
 
 ```
 mkdir Trim
@@ -151,14 +153,14 @@ ls *trimmed | xargs -tI{} fastqc -o Trim {}
 ```
 
 
-# Получим статистику с помощью multiqc:
+## Получим статистику с помощью multiqc:
 
 ```
 mkdir multiqc2  
 multiqc -o multiqc2 Trim 
 ```
 
-# Собирем контиги из подрезанных чтений с помощью platanus assemble:
+## Собирем контиги из подрезанных чтений с помощью platanus assemble:
 
 ```
 mkdir platanus
@@ -173,7 +175,7 @@ sys	0m0.003s
 ```
 
 
-# Собираем скаффолды из контигов и подрезанных чтений с помощью platanus scaffold
+## Собираем скаффолды из контигов и подрезанных чтений с помощью platanus scaffold
 
 ```
 time platanus scaffold -o Poil -t 1 -c Poil_contig.fa -IP1 *.trimmed -OP2 *.int_trimmed 2> ~/platanus/Final_scaffold.log
@@ -185,14 +187,14 @@ user	0m41,191s
 sys	0m1,436s
 ```
 
-# Уменьшаем количество гэпов с помощью platanus gap_close:
+## Уменьшаем количество гэпов с помощью platanus gap_close:
 
 ```
 platanus gap_close -o Poil -t 1 -c Poil_scaffold.fa -IP1 *.trimmed -OP2 *.int_trimmed 2> ~/platanus/gapclose.log
 ```
 
 
-## Бонус
+# Бонус
 
 ```
 seqtk sample -s946 oil_R1.fastq 5000000 > R1_bonus.fastq  

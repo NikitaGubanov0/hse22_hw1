@@ -196,25 +196,6 @@ platanus gap_close -o Poil -t 1 -c Poil_scaffold.fa -IP1 *.trimmed -OP2 *.int_tr
 ```
 
 
-# Бонус
-
-```
-seqtk sample -s946 oil_R1.fastq 5000000 > R1_bonus.fastq  
-seqtk sample -s946 oil_R2.fastq 5000000 > R2_bonus.fastq  
-seqtk sample -s946 oilMP_S4_L001_R1_001.fastq 1500000 > R1_bonus_end.fastq  
-seqtk sample -s946 oilMP_S4_L001_R1_001.fastq 1500000 > R2_bonus_end.fastq 
-mkdir bonus_fastqc_result
-fastqc bonus_R1_bonus.fastq bonus_R2_bonus.fastq bonus_R1_bonus_end.fastq bonus_R2_bonus_end.fastq -o bonus_fastqc_result
-multiqc bonus_fastqc_result -o bonus_multiqc_result
-platanus_trim bonus_R1_bonus.fastq bonus_R2_bonus.fastq
-platanus_internal_trim bonus_R1_bonus_end.fastq bonus_R2_bonus_end.fastq
-mkdir bonus_fastqc_trimmed_result
-fastqc bonus_R1_bonus.fastq.trimmed bonus_R2_bonus.fastq.trimmed bonus_R1_bonus_end.fastq.int_trimmed bonus_R2_bonus_end.fastq.int_trimmed -o bonus_fastqc_trimmed_result
-multiqc bonus_fastqc_result -o bonus_multiqc_trimmed_result
-platanus assemble -f bonus_R1_bonus.fastq.trimmed bonus_R2_bonus.fastq.trimmed -o bonus_sub
-platanus scaffold -c bonus_sub_contig.fa -b bonus_sub_contigBubble.fa -IP1 bonus_R1_bonus.fastq.trimmed bonus_R2_bonus.fastq.trimmed -OP2 bonus_R1_bonus_end.fastq.int_trimmed bonus_R2_bonus_end.fastq.int_trimmed -o bonus_sub
-platanus gap_close -c bonus_sub_scaffold.fa -IP1 bonus_R1_bonus.fastq.trimmed bonus_R2_bonus.fastq.trimmed -OP2 bonus_R1_bonus_end.fastq.int_trimmed bonus_R2_bonus_end.fastq.int_trimmed -o bonus_sub
-```
 
 
 

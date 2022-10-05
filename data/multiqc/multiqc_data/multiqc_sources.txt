@@ -1,0 +1,5 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	R2_mate_end	/home/negubanov/hw1/fastqc/R2_mate_end_fastqc.zip
+FastQC	all_sections	R1_mate_end	/home/negubanov/hw1/fastqc/R1_mate_end_fastqc.zip
+FastQC	all_sections	R2_paired_end	/home/negubanov/hw1/fastqc/R2_paired_end_fastqc.zip
+FastQC	all_sections	R1_paired_end	/home/negubanov/hw1/fastqc/R1_paired_end_fastqc.zip

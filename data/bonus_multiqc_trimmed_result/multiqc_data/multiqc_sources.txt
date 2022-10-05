@@ -1,0 +1,5 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	bonus_subMP2	/home/negubanov/hw1/bonus_fastqc_result/bonus_subMP2_fastqc.zip
+FastQC	all_sections	bonus_sub1	/home/negubanov/hw1/bonus_fastqc_result/bonus_sub1_fastqc.zip
+FastQC	all_sections	bonus_sub2	/home/negubanov/hw1/bonus_fastqc_result/bonus_sub2_fastqc.zip
+FastQC	all_sections	bonus_subMP1	/home/negubanov/hw1/bonus_fastqc_result/bonus_subMP1_fastqc.zip

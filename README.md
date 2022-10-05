@@ -1,5 +1,7 @@
 # hse22_hw1
 
+# [Google Colab](https://colab.research.google.com/drive/1d2Ia8XzxojKMvSM8lXtlR63232_5KIM8#scrollTo=G-kjm7V1iwVV)
+
 ## Заходим на сервер 
 ```
 ssh negubanov@92.242.58.92 -p 32222 -i mykey
